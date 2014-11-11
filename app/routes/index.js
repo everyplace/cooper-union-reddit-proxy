@@ -23,3 +23,23 @@ exports.weather = function(req, res){
   });
 
 };
+
+exports.location = function(req, res){
+
+  res.set({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*'
+  });
+
+  console.log("Locationing...");
+  var wunderground_api = process.env.WUNDERGROUND_API;
+
+  var weatherUndergroundUrl = "http://api.wunderground.com/api/"+wunderground_api+"/geolookup/q/"+req.params.latitude+"/"+req.params.longitude+".json";
+  console.log(weatherUndergroundUrl);
+  request(weatherUndergroundUrl,function(err, response, body){
+
+    res.end(body);
+
+  });
+
+};
