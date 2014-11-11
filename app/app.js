@@ -24,7 +24,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-
 //configure routes
 app.get('/', routes.index);
 app.get('/weather/:state/:city', routes.weather);
