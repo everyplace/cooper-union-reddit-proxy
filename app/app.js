@@ -27,6 +27,7 @@ app.configure('development', function(){
 //configure routes
 app.get('/', routes.index);
 app.get('/weather/:state/:city', routes.weather);
+app.get('/location/:latitude/:longitude', routes.location);
 
 
 //initiate the app server
