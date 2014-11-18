@@ -23,11 +23,13 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
 //configure routes
 app.get('/', routes.index);
-app.get('/weather/:state/:city', routes.weather);
-app.get('/location/:latitude/:longitude', routes.location);
+app.get('/colors', routes.colors);
+app.get('/colors/new', routes.new);
+app.get('/colors/top', routes.top);
+
+
 
 
 //initiate the app server

@@ -7,9 +7,9 @@
     </style>
   </head>
   <body>
-    <h1>Cooper Union Weather Proxy</h1>
-    <a href="/weather/NY/Manhattan">Example Weather for Manhattan</a>
-    <a href="/weather/NY/Brooklyn">Example Weather for Brooklyn</a>
-    <a href="/location/40.7291/-73.9906">Example Weather 40.7291, -73.9906 (the foundation building)</a>
+    <h1>Cooper Union Color Proxy</h1>
+    <a href="/colors">Example colors</a>
+    <a href="/colors/new">New Colors</a>
+    <a href="/colors/top">Top Colors</a>
 
 </html>

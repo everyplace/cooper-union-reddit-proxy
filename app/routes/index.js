@@ -5,18 +5,23 @@ exports.index = function(req, res){
 };
 
 
-exports.weather = function(req, res){
+exports.json = function(req, res, next) {
 
+
+  // http://www.colourlovers.com/api/colors/new?format=json
   res.set({
     'Content-Type':'application/json',
     'Access-Control-Allow-Origin':'*'
   });
+  next();
+};
 
-  console.log("Weathering...");
-  var wunderground_api = process.env.WUNDERGROUND_API;
-  var weatherUndergroundUrl = "http://api.wunderground.com/api/"+wunderground_api+"/conditions/q/"+req.params.state+"/"+req.params.city+".json";
-  console.log(weatherUndergroundUrl);
-  request(weatherUndergroundUrl,function(err, response, body){
+
+exports.colors = function(req, res){
+
+  var url = "http://www.colourlovers.com/api/colors?format=json";
+  console.log(url);
+  request(url,function(err, response, body){
 
     res.end(body);
 
@@ -24,19 +29,23 @@ exports.weather = function(req, res){
 
 };
 
-exports.location = function(req, res){
+exports.new = function(req, res){
 
-  res.set({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'*'
+  var url = "http://www.colourlovers.com/api/colors/new?format=json";
+  console.log(url);
+  request(url,function(err, response, body){
+
+    res.end(body);
+
   });
 
-  console.log("Locationing...");
-  var wunderground_api = process.env.WUNDERGROUND_API;
+};
 
-  var weatherUndergroundUrl = "http://api.wunderground.com/api/"+wunderground_api+"/geolookup/q/"+req.params.latitude+","+req.params.longitude+".json";
-  console.log(weatherUndergroundUrl);
-  request(weatherUndergroundUrl,function(err, response, body){
+exports.top = function(req, res){
+
+  var url = "http://www.colourlovers.com/api/colors/top?format=json";
+  console.log(url);
+  request(url,function(err, response, body){
 
     res.end(body);
 
