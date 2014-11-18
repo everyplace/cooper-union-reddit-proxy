@@ -25,9 +25,9 @@ app.configure('development', function(){
 });
 //configure routes
 app.get('/', routes.index);
-app.get('/colors', routes.colors);
-app.get('/colors/new', routes.new);
-app.get('/colors/top', routes.top);
+app.get('/colors', routes.json, routes.colors);
+app.get('/colors/new', routes.json, routes.new);
+app.get('/colors/top', routes.json, routes.top);
 
 
 
