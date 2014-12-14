@@ -44,9 +44,9 @@ app.get('/', function(req, res){
        console.log(document_url);
 
        var audio_url = base_url + '/api/rest/v2/audio/?case_number=' + result.case_number + '&format=json';
-       // console.log(audio_url);
+       console.log(audio_url);
 
-       
+
 
        request({url:audio_url}, function(error, response, body){
         // res.send(JSON.parse(body).objects[0].download_url);
@@ -60,7 +60,7 @@ app.get('/', function(req, res){
       res.end(JSON.stringify(result));
     });
 
-     // var results = JSON.parse(body).objects;     
+     // var results = JSON.parse(body).objects;
 
   });
 
