@@ -2,14 +2,28 @@
 <html>
   <head>
     <title>{{title}}</title>
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//cdn.rawgit.com/sahilm/reddit.js/master/reddit.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+        reddit.search("new york city").t('month').limit(50).fetch(function(res){
+          var posts = res.data.children;
+
+          for(var i = 0; i<posts.length; i++) {
+            console.log(posts[i].data);
+            $("body").append("<p>"+posts[i].data.selftext+"</p>");
+          }
+
+        });
+
+      });
+    </script>
     <style>
       a { display: block; }
     </style>
   </head>
   <body>
-    <h1>Cooper Union Color Proxy</h1>
-    <a href="/colors">Example colors</a>
-    <a href="/colors/new">New Colors</a>
-    <a href="/colors/top">Top Colors</a>
-
+    <h1>Cooper Union Reddit Proxy</h1>
+    <h2>A search for "new york city"</h2>
 </html>

@@ -1,12 +1,13 @@
 {
-  "name": "Cooper-Union-Courtlistener",
-  "repository":"https://github.com/everyplace/cooper-union-courtlistener.git",
+  "name": "Cooper-Union-Reddit",
+  "repository":"https://github.com/everyplace/cooper-union-reddit.git",
   "version": "0.1.0",
   "dependencies": {
     "express": "*",
     "request":"*",
     "hjs":"*",
-    "request":"*"
+    "request":"*",
+    "redwrap":"*"
   },
   "engines": {
     "node": "0.10.x",
