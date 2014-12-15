@@ -7,15 +7,44 @@
     <script>
       $(document).ready(function(){
 
-        reddit.search("new york city").t('month').limit(50).fetch(function(res){
+        reddit.search("new york city").t('month').limit(5).fetch(function(res){
           var posts = res.data.children;
 
           for(var i = 0; i<posts.length; i++) {
             console.log(posts[i].data);
-            $("body").append("<p>"+posts[i].data.selftext+"</p>");
+            if(posts[i].data.selftext !== null) {
+              if(posts[i].data.selftext != null) {
+                $("body").append("<p id="+posts[i].data.id+">"+posts[i].data.selftext+"</p>");
+              }
+            }
+
+            getComments(posts[i]);
+
           }
 
         });
+
+
+        var getComments = function(post) {
+          reddit.comments(post.data.id, post.data.subreddit).limit(1).sort("hot").fetch(function(comments) {
+
+            // $("#"+posts[i].data.id).append()
+            // console.log(comments[0].data);
+            for (var i = 0; i<comments.length; i++) {
+
+              if(comments[i].kind == "Listing") {
+                var comment = comments[i].data.children;
+                for( var j = 0; j<comment.length; j++) {
+                  if(comment[j].data.body != undefined) {
+                    // console.log(comment[j].data.body, "LISTING")
+                    $("#"+post.data.id).append("<p>"+comment[j].data.body+"</p>")
+                  }
+                }
+              }
+
+            }
+          });
+        }
 
       });
     </script>
